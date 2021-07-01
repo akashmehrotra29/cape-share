@@ -90,7 +90,7 @@ export const NewPost = () => {
   return (
     <>
       <Box width="full">
-        <Flex>
+        <Flex mt={4}>
           <Avatar
             size="md"
             name={user?.loggedInUser?.name}

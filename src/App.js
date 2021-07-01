@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useToast } from "@chakra-ui/toast";
 
 import { Home } from "./app/Home/Home";
+import { Navbar } from "./app/Navbar/Navbar";
 import { Login } from "./features/user/Login";
 import { Signup } from "./features/user/Signup";
 import {
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

@@ -13,7 +13,7 @@ import {
   uploadVideo,
   validateData,
   validateFileSize,
-} from "./utils";
+} from "./posts.utils";
 import { addNewPost } from "./postsSlice";
 
 export const NewPost = () => {

@@ -69,17 +69,25 @@ export const NewPost = () => {
     let videoUrlArray = await uploadVideo(videos);
     imageUrlArray = imageUrlArray.map((image) => ({
       mediaType: "IMAGE",
-      image,
+      source: image,
     }));
     videoUrlArray = videoUrlArray.map((video) => ({
       mediaType: "VIDEO",
-      video,
+      source: video,
     }));
     formValues.time = new Date();
 
     dispatch(
       addNewPost({ ...formValues, media: [...imageUrlArray, ...videoUrlArray] })
     );
+
+    toast({
+      position: "bottom-right",
+      title: "New post created successfully",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
 
     setStatus("idle");
     setFormValues({ content: "", time: null, media: [] });
@@ -121,8 +129,6 @@ export const NewPost = () => {
             borderRadius="1.5rem"
             bg="#0EA5E9"
             color="white"
-            // borderWidth="3px"
-            // borderColor="#0EA5E9"
             onClick={() => videoRef.current.click()}
           >
             <FaVideo />

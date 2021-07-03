@@ -41,7 +41,7 @@ export const setupAuthExceptionHandler = (
           isClosable: true,
         });
         dispatch(logout());
-        navigate("signin");
+        navigate("/login");
       }
       return Promise.reject(error);
     }

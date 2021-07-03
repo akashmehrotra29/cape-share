@@ -12,6 +12,8 @@ import { FaUser } from "react-icons/fa";
 import { Portal } from "@chakra-ui/portal";
 import { Button } from "@chakra-ui/button";
 import { Divider } from "@chakra-ui/layout";
+import { useDisclosure } from "@chakra-ui/react";
+
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/user/userSlice";
@@ -20,6 +22,7 @@ export const AccountDrawer = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { onClose } = useDisclosure();
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -48,11 +51,12 @@ export const AccountDrawer = () => {
           <PopoverHeader align="center">Account Details</PopoverHeader>
           <PopoverBody maxHeight="70vh">
             <Button
-              onClick={() =>
+              onClick={() => {
+                onClose();
                 navigate("/profile", {
                   state: { userId: user.loggedInUser._id }, //to avoid sending user id in url
-                })
-              }
+                });
+              }}
               variant="ghost"
               width="full"
             >

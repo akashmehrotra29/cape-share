@@ -1,7 +1,4 @@
-import axios from "axios";
-
-export const validateData = (formValues) =>
-  formValues.content !== "" && formValues.media.length !== 0;
+export const validateData = (formValues) => formValues.content !== "";
 
 export const validateFileSize = (files) => {
   for (let i = 0; i < files.length; i++) {
@@ -17,12 +14,15 @@ export const uploadImage = async (images) => {
   for (let i = 0; i < images.length; i++) {
     const formData = new FormData();
     formData.append("file", images[i]);
-    formData.append("upload_preset", "image upload");
-    const response = await axios.post(
+    formData.append("upload_preset", "p3bqcvv5");
+    let response = await fetch(
       "https://api.cloudinary.com/v1_1/akash29/image/upload",
-      formData
+      {
+        method: "POST",
+        body: formData,
+      }
     );
-    // console.log({ response });
+    response = await response.json();
     imageUrlArray.push(response.url);
   }
   return imageUrlArray;
@@ -33,13 +33,20 @@ export const uploadVideo = async (videos) => {
   for (let i = 0; i < videos.length; i++) {
     const formData = new FormData();
     formData.append("file", videos[i]);
-    formData.append("upload_preset", "video upload");
-    const response = await axios.post(
+    formData.append("upload_preset", "p3bqcvv5");
+    let response = await fetch(
       "https://api.cloudinary.com/v1_1/akash29/video/upload",
-      formData
+      {
+        method: "POST",
+        body: formData,
+      }
     );
-    console.log({ response });
+    response = await response.json();
     videoUrlArray.push(response.url);
   }
   return videoUrlArray;
+};
+
+export const likedPost = (post, loggedInUser) => {
+  return post.likes.findIndex((user) => user._id === loggedInUser._id) !== -1;
 };

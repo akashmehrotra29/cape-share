@@ -26,7 +26,7 @@ export const signup = createAsyncThunk(
 
 // to persist login
 export const getUserData = createAsyncThunk("user/getUserData", async () => {
-  const response = await axios.get("/user");
+  const response = await axios.get("/users");
   return response.data;
 });
 

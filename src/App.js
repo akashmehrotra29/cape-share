@@ -7,12 +7,15 @@ import { Home } from "./app/Home/Home";
 import { Navbar } from "./app/Navbar/Navbar";
 import { Login } from "./features/user/Login";
 import { Signup } from "./features/user/Signup";
+import { Profile } from "./features/profile/Profile";
 import {
   setAxiosBaseURL,
   setupAuthExceptionHandler,
   setupAuthHeadersForApiCalls,
 } from "./features/user/user.utils";
 import { getUserData, logout } from "./features/user/userSlice";
+import { Following } from "./features/profile/Following";
+import { Followers } from "./features/profile/Followers";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +43,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/following" element={<Following />} />
+        <Route path="/followers" element={<Followers />} />
       </Routes>
     </>
   );

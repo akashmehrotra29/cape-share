@@ -44,7 +44,7 @@ export const Following = () => {
       )}
       {status === "idle" && (
         <Container maxW="container.sm">
-          <Heading as="h3" size="lg" mt={8} align="center">
+          <Heading as="h3" size="lg" mt={8} mb={6} align="center">
             Following
           </Heading>
           <VStack>

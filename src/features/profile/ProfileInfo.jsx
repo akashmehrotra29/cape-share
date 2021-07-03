@@ -55,7 +55,7 @@ export const ProfileInfo = ({ user, following }) => {
               mt={5}
               borderRadius="1.5rem"
               border="1px"
-              borderColor="0EA5E9"
+              borderColor="#0EA5E9"
               onClick={() =>
                 dispatch(
                   follow({

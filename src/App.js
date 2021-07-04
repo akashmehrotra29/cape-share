@@ -16,6 +16,7 @@ import {
 import { getUserData, logout } from "./features/user/userSlice";
 import { Following } from "./features/profile/Following";
 import { Followers } from "./features/profile/Followers";
+import { Notification } from "./features/notifications/Notification";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/following" element={<Following />} />
         <Route path="/followers" element={<Followers />} />
+        <Route path="/notifications" element={<Notification/>}/>
       </Routes>
     </>
   );

@@ -55,7 +55,6 @@ export const FollowSuggestions = () => {
             flexWrap="wrap"
           >
             {suggestedUsers?.map((user) => {
-              console.log("user from follow suggestions", user);
               return (
                 <Box
                   key={user._id}

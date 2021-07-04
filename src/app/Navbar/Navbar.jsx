@@ -1,8 +1,8 @@
-import { Flex, Heading, HStack, Spacer } from "@chakra-ui/layout";
+import { Flex, Heading, HStack, Spacer, Box, Circle } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/button";
 import { useColorModeValue } from "@chakra-ui/react";
-import { FaHome } from "react-icons/fa";
+import { FaBell, FaHome } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -11,6 +11,7 @@ import { AccountDrawer } from "./AccountDrawer";
 
 export const Navbar = () => {
   const user = useSelector((state) => state.user);
+  const { notifications } = useSelector((state) => state.notification);
   const navigate = useNavigate();
 
   return (
@@ -49,7 +50,30 @@ export const Navbar = () => {
               onClick={() => navigate("/")}
             />
             <AccountDrawer />
-            {/* <Notification /> */}
+            <Box position="relative" onClick={() => navigate("/notifications")}>
+              <IconButton
+                size="md"
+                fontSize="2xl"
+                aria-label="notifications"
+                variant="ghost"
+                color="current"
+                icon={<FaBell />}
+              />
+              <Box display={notifications.length < 1 && "none"}>
+                <Circle
+                  cursor="pointer"
+                  fontSize={10}
+                  size="20px"
+                  bg="pink.500"
+                  color="white"
+                  position="absolute"
+                  top="0"
+                  right="0"
+                >
+                  {notifications.length}
+                </Circle>
+              </Box>
+            </Box>
           </>
         )}
       </HStack>

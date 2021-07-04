@@ -18,6 +18,7 @@ import { Following } from "./features/profile/Following";
 import { Followers } from "./features/profile/Followers";
 import { Notification } from "./features/notifications/Notification";
 import { UpdateUserProfile } from "./features/profile/UpdateUserProfile";
+import { PrivateRoute } from "./common/PrivateRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,14 +43,14 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/following" element={<Following />} />
-        <Route path="/followers" element={<Followers />} />
-        <Route path="/notifications" element={<Notification />} />
-        <Route path="/edit-profile" element={<UpdateUserProfile />} />
+        <PrivateRoute path="/" element={<Home />} />
+        <PrivateRoute path="/profile" element={<Profile />} />
+        <PrivateRoute path="/following" element={<Following />} />
+        <PrivateRoute path="/followers" element={<Followers />} />
+        <PrivateRoute path="/notifications" element={<Notification />} />
+        <PrivateRoute path="/edit-profile" element={<UpdateUserProfile />} />
       </Routes>
     </>
   );

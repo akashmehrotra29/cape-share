@@ -14,7 +14,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { getNotifications } from "./notificationSlice";
-import { PopoverBody } from "@chakra-ui/react";
 
 export const Notification = () => {
   const { loggedInUser } = useSelector((state) => state.user);

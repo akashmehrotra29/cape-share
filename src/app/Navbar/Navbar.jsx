@@ -56,7 +56,7 @@ export const Navbar = () => {
                 fontSize="2xl"
                 aria-label="notifications"
                 variant="ghost"
-                color="current"
+                color="white"
                 icon={<FaBell />}
               />
               <Box display={notifications.length < 1 && "none"}>

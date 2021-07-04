@@ -30,6 +30,14 @@ export const getUserData = createAsyncThunk("user/getUserData", async () => {
   return response.data;
 });
 
+export const updateUserProfile = createAsyncThunk(
+  "user/updaterUserProfile",
+  async (requestBody) => {
+    const response = await axios.post("/users", requestBody);
+    return response.data;
+  }
+);
+
 const initialState = {
   loggedInUser: null,
   status: "idle",
@@ -81,6 +89,14 @@ const userSlice = createSlice({
       console.log("rejected", current(state), current(action));
       state.status = "error";
       state.error = action.error.message;
+    },
+    [updateUserProfile.fulfilled]: (state, action) => {
+      const updatedUser = action.payload.user;
+      Object.keys(updatedUser).forEach((key) => {
+        if (key in state.loggedInUser) {
+          state.loggedInUser[key] = updatedUser[key];
+        }
+      });
     },
   },
 });

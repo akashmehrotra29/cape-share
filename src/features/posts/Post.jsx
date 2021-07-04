@@ -26,6 +26,8 @@ import {
   unlikeProfilePost,
 } from "../profile/profileSlice";
 
+import { likeFeedPost, unlikeFeedPost, commentFeedPost } from "./postsSlice";
+
 export const Post = ({ post, from }) => {
   const loggedInUser = useSelector((state) => state.user.loggedInUser);
   const isLikedPost = likedPost(post, loggedInUser);
@@ -37,17 +39,24 @@ export const Post = ({ post, from }) => {
 
   const likePost = async () => {
     if (from === "PROFILE") {
+      //to rerender both profile and feed post likes
       dispatch(likeProfilePost(post._id));
+    } else if (from === "FEED") {
+      dispatch(likeFeedPost(post._id));
     }
   };
   const unlikePost = async () => {
     if (from === "PROFILE") {
       dispatch(unlikeProfilePost(post._id));
+    } else if (from === "FEED") {
+      dispatch(unlikeFeedPost(post._id));
     }
   };
   const createPostComment = async (commentData) => {
     if (from === "PROFILE") {
       dispatch(commentProfilePost(commentData));
+    } else if (from === "FEED") {
+      dispatch(commentFeedPost(post._id));
     }
   };
 

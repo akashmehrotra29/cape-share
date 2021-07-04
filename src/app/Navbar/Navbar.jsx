@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { ToggleMode } from "./ToggleMode";
 import { AccountDrawer } from "./AccountDrawer";
+import { logo } from "../../logo.svg";
 
 export const Navbar = () => {
   const user = useSelector((state) => state.user);
@@ -29,7 +30,7 @@ export const Navbar = () => {
       >
         <Image
           boxSize="12"
-          // src={logo}
+          src="https://res.cloudinary.com/akash29/image/upload/v1625433592/c23c1b86350748ca8e101b223f7525bc_1_bpc4pj.png"
           alt="cape shares"
           onClick={() => navigate("/")}
         />

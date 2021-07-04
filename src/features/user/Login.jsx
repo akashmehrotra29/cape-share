@@ -29,7 +29,7 @@ export const Login = () => {
     event.preventDefault();
     try {
       let result = dispatch(login(formInputs));
-      result = unwrapResult(result);
+      unwrapResult(result);
       setupAuthExceptionHandler(dispatch, logout, navigate, toast);
       toast({
         position: "bottom-right",

@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 import { Navigate, Route, useLocation } from "react-router";
 
 export const PrivateRoute = (props) => {
-  const { loggedInUser } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
+  
 
   const location = useLocation();
 
-  if (loggedInUser) {
+  if (user) {
     return <Route {...props} />;
   }
 

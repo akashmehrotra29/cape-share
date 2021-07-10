@@ -8,7 +8,6 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { ColorModeScript } from "@chakra-ui/color-mode";
-// import { ChakraProvider, theme } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 

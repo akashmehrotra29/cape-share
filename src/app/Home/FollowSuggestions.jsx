@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
+import { Box, Flex, Text } from "@chakra-ui/layout";
 import { IconButton } from "@chakra-ui/button";
 import { FaWindowClose } from "react-icons/fa";
 import { Avatar } from "@chakra-ui/avatar";
@@ -6,16 +6,14 @@ import { Button } from "@chakra-ui/button";
 
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
-import { follow, unFollow } from "../../features/profile/profileSlice";
 
 export const FollowSuggestions = () => {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
   const { loggedInUser } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (loggedInUser) {
@@ -44,9 +42,7 @@ export const FollowSuggestions = () => {
             variant="ghost"
             icon={<FaWindowClose />}
           />
-          {/* <Heading as="h3" size="sm" textAlign="center" mt={6} mb={4}>
-            Follow Suggestions
-          </Heading> */}
+
           <Flex
             justifyContent="center"
             direction="row"

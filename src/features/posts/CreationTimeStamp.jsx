@@ -1,5 +1,4 @@
 import { Text } from "@chakra-ui/layout";
-import { useColorModeValue } from "@chakra-ui/color-mode";
 
 import { parseISO, formatDistanceToNow } from "date-fns";
 

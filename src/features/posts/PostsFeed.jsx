@@ -1,7 +1,6 @@
 import { VStack, Center, Box, HStack, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Skeleton, SkeletonText } from "@chakra-ui/skeleton";
-import { FaCheckCircle } from "react-icons/fa";
 
 import { Post } from "./Post";
 import { getUserFeed } from "./postsSlice";

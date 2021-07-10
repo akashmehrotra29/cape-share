@@ -30,7 +30,7 @@ export const Signup = () => {
     event.preventDefault();
     try {
       let result = dispatch(signup(formInputs));
-      result = unwrapResult(result); // throws error if not fulfilled
+      unwrapResult(result); // throws error if not fulfilled
       toast({
         position: "bottom-right",
         title: `Account Created Successfully.`,

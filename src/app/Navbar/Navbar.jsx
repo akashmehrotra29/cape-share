@@ -1,4 +1,4 @@
-import { Flex, Heading, HStack, Spacer, Box, Circle } from "@chakra-ui/layout";
+import { Flex, HStack, Spacer, Box, Circle } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/button";
 import { useColorModeValue } from "@chakra-ui/react";
@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { ToggleMode } from "./ToggleMode";
 import { AccountDrawer } from "./AccountDrawer";
-import { logo } from "../../logo.svg";
 
 export const Navbar = () => {
   const user = useSelector((state) => state.user);

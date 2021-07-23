@@ -56,7 +56,7 @@ export const Post = ({ post, from }) => {
     if (from === "PROFILE") {
       dispatch(commentProfilePost(commentData));
     } else if (from === "FEED") {
-      dispatch(commentFeedPost(post._id));
+      dispatch(commentFeedPost(commentData));
     }
   };
 

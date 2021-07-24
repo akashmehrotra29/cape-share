@@ -25,9 +25,10 @@ export const Profile = () => {
 
   useEffect(() => {
     if (loggedInUser) {
-      (async () => {
+      (() => {
         try {
           setStatus("loading");
+          // console.log("line 31: ", status);
           unwrapResult(dispatch(getProfilePosts(userId)));
           unwrapResult(dispatch(getUser(userId)));
           setStatus("idle");
@@ -44,7 +45,7 @@ export const Profile = () => {
       })();
     }
     return () => dispatch(resetProfile());
-  }, []);
+  }, [loggedInUser]);
 
   return (
     <>

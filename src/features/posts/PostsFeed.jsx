@@ -20,6 +20,21 @@ export const PostsFeed = () => {
 
   return (
     <>
+      {(posts.status === "loading" || user.status === "loading") && (
+        <>
+          <VStack width="full" spacing={8}>
+            <Box width="full">
+              <Skeleton height="200px" mt={4} />
+              <SkeletonText mt="4" noOfLines={2} spacing="4" />
+            </Box>
+            <Box width="full">
+              <Skeleton height="200px" mt={4} />
+              <SkeletonText mt="4" noOfLines={2} spacing="4" />
+            </Box>
+          </VStack>
+        </>
+      )}
+
       <VStack width="full" spacing={8} mt={8}>
         {posts.posts.map((post) => {
           return <Post post={post} key={post._id} from="FEED" />;
@@ -43,21 +58,6 @@ export const PostsFeed = () => {
           </HStack>
         )}
       </Center>
-
-      {(posts.status === "loading" || user.status === "loading") && (
-        <>
-          <VStack width="full" spacing={8}>
-            <Box width="full">
-              <Skeleton height="200px" mt={4} />
-              <SkeletonText mt="4" noOfLines={2} spacing="4" />
-            </Box>
-            <Box width="full">
-              <Skeleton height="200px" mt={4} />
-              <SkeletonText mt="4" noOfLines={2} spacing="4" />
-            </Box>
-          </VStack>
-        </>
-      )}
     </>
   );
 };

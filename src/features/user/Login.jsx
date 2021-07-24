@@ -25,10 +25,10 @@ export const Login = () => {
   const toast = useToast();
   const [isMobile] = useMediaQuery("(max-width: 480px)");
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      let result = dispatch(login(formInputs));
+      let result = await dispatch(login(formInputs));
       unwrapResult(result);
       setupAuthExceptionHandler(dispatch, logout, navigate, toast);
       toast({

@@ -12,7 +12,7 @@ import { resetProfile } from "./profileSlice";
 import { Post } from "../posts/Post";
 
 export const Profile = () => {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState("");
   const loggedInUser = useSelector((state) => state.user.loggedInUser);
 
   const {
@@ -25,12 +25,11 @@ export const Profile = () => {
 
   useEffect(() => {
     if (loggedInUser) {
-      (() => {
+      (async () => {
         try {
           setStatus("loading");
-          // console.log("line 31: ", status);
-          unwrapResult(dispatch(getProfilePosts(userId)));
-          unwrapResult(dispatch(getUser(userId)));
+          unwrapResult(await dispatch(getProfilePosts(userId)));
+          unwrapResult(await dispatch(getUser(userId)));
           setStatus("idle");
         } catch (error) {
           console.log(error);
@@ -51,7 +50,7 @@ export const Profile = () => {
     <>
       {status === "loading" && (
         <Container maxW="container.sm" centerContent mt={4}>
-          <Spinner size="lg" />
+          <Spinner />
         </Container>
       )}
 

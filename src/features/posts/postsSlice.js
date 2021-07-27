@@ -72,7 +72,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [getUserFeed.pending]: (state, action) => {
+    [getUserFeed.pending]: (state) => {
       state.status = "loading";
     },
 

@@ -10,7 +10,7 @@ import { useToast } from "@chakra-ui/toast";
 import { useEffect, useState } from "react";
 import { uploadImage } from "../posts/posts.utils";
 import { updateUserProfile } from "../user/userSlice";
-import { IconButton, Spinner } from "@chakra-ui/react";
+import { color, IconButton, Spinner } from "@chakra-ui/react";
 import { FaUserEdit } from "react-icons/fa";
 
 export const UpdateUserProfile = () => {
@@ -110,13 +110,18 @@ export const UpdateUserProfile = () => {
             src={loggedInUser?.photo}
           />
         </Box>
-        <input
-          readOnly={!isEditMode}
+        <Input
+          display={!isEditMode && "none"}
           type="file"
           id="file"
           onChange={(event) => handleFormInputsChange(event)}
           name="photo"
           accept="image/*"
+          style={{
+            outline: "none",
+            borderColor: "transparent",
+            padding: "0rem",
+          }}
         />
         <VStack spacing={5} mt={4}>
           <FormControl>
@@ -135,6 +140,7 @@ export const UpdateUserProfile = () => {
           <FormControl>
             <FormLabel>Bio</FormLabel>
             <Textarea
+              readOnly={!isEditMode}
               width="full"
               name="bio"
               value={formInputs.bio}

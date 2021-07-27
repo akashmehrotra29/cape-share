@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/modal";
 import { Textarea } from "@chakra-ui/textarea";
 import { useToast } from "@chakra-ui/toast";
+import { Spinner } from "@chakra-ui/spinner";
 
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,24 +34,29 @@ export const Post = ({ post, from }) => {
   const isLikedPost = likedPost(post, loggedInUser);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [content, setContent] = useState("");
+  const [likeStatus, setLikeStatus] = useState("idle");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
 
   const likePost = async () => {
+    setLikeStatus("loading");
     if (from === "PROFILE") {
       //to rerender both profile and feed post likes
-      dispatch(likeProfilePost(post._id));
+      await dispatch(likeProfilePost(post._id));
     } else if (from === "FEED") {
-      dispatch(likeFeedPost(post._id));
+      await dispatch(likeFeedPost(post._id));
     }
+    setLikeStatus("idle");
   };
   const unlikePost = async () => {
+    setLikeStatus("loading");
     if (from === "PROFILE") {
-      dispatch(unlikeProfilePost(post._id));
+      await dispatch(unlikeProfilePost(post._id));
     } else if (from === "FEED") {
-      dispatch(unlikeFeedPost(post._id));
+      await dispatch(unlikeFeedPost(post._id));
     }
+    setLikeStatus("idle");
   };
   const createPostComment = async (commentData) => {
     if (from === "PROFILE") {
@@ -141,7 +147,7 @@ export const Post = ({ post, from }) => {
               width="full"
               onClick={likePost}
             >
-              <FaRegThumbsUp />
+              {likeStatus === "loading" ? <Spinner /> : <FaRegThumbsUp />}
             </Button>
           ) : (
             <Button
@@ -150,7 +156,7 @@ export const Post = ({ post, from }) => {
               color="#0EA5E9"
               onClick={unlikePost}
             >
-              <FaThumbsUp />
+              {likeStatus === "loading" ? <Spinner /> : <FaThumbsUp />}
             </Button>
           )}
           <Button

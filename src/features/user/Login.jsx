@@ -16,8 +16,8 @@ import { setupAuthExceptionHandler } from "./user.utils";
 
 export const Login = () => {
   const [formInputs, setFormInputs] = useState({
-    email: null,
-    password: null,
+    email: "",
+    password: "",
   });
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -58,6 +58,15 @@ export const Login = () => {
     });
   };
 
+  const handleAutofillCredentials = (event) => {
+    setFormInputs((formInput) => {
+      formInputs["email"] = "test@test.com";
+      formInputs["password"] = "test";
+      return { ...formInputs };
+    });
+    handleFormSubmit(event);
+  };
+
   return (
     <>
       <Grid templateColumns="repeat(2, 1fr)">
@@ -85,7 +94,7 @@ export const Login = () => {
                       name="email"
                       type="email"
                       placeholder="Email Address"
-                      values={formInputs.email}
+                      value={formInputs.email}
                       onChange={handleFormInput}
                     />
                   </FormControl>
@@ -96,7 +105,7 @@ export const Login = () => {
                       name="password"
                       type="password"
                       placeholder="Password"
-                      values={formInputs.password}
+                      value={formInputs.password}
                       onChange={handleFormInput}
                     />
                   </FormControl>
@@ -112,9 +121,20 @@ export const Login = () => {
                     )}
                     {user.status === "loading" && <Spinner />}
                   </Button>
+
+                  <Text m={4} width="100%" textAlign="center">
+                    <Button
+                      variant="link"
+                      color="#0EA5E9"
+                      onClick={handleAutofillCredentials}
+                    >
+                      Login as Guest
+                    </Button>{" "}
+                  </Text>
                 </VStack>
               </form>
-              <Text m={4} width="100%" textAlign="center">
+
+              <Text mt={4} width="100%" textAlign="center">
                 Don't have an account ?{" "}
                 <Button
                   variant="link"

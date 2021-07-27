@@ -69,7 +69,7 @@ export const Signup = () => {
               p={10}
               borderWidth="1px"
               borderRadius="lg"
-              mt="40%"
+              mt="18%"
             >
               <Box mb={5} textAlign="center">
                 <Heading as="h2" size="lg">
